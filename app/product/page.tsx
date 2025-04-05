@@ -1,5 +1,4 @@
-
-import { getData } from "@/services/products";
+import {getData} from "@/services/products";
 import Link from "next/link";
 
 type ProductPageProps = {params: {slug: string[]}};
@@ -10,16 +9,13 @@ export default async function ProductPageProps(props: ProductPageProps) {
 
  return (
   <div className="min-h-screen py-4 flex flex-col gap-5 px-10 justify-center bg-gradient-to-br from-slate-800 to-slate-500">
-   <h1 className="text-xl font-semibold text-white">
-    {params.slug ? "Detail Product Page" : "Recomended Product"}
-   </h1>
    <div className="grid grid-cols-4 gap-5 place-items-center">
     {products.data.length > 0 &&
      products.data.map((product: any) => (
       <Link
        href={`/product/detail/${product.id}`}
        key={product.id}
-       className="h-[300px]  max-w-sm w-full border rounded-lg bg-slate-800 flex flex-col justify-between p-3">
+       className="h-[300px] w-11/12 border rounded-lg bg-slate-800 flex flex-col justify-between p-3">
        <div className="max-h-[190px] justify-center flex items-center">
         <img
          src={product.image}
@@ -28,7 +24,7 @@ export default async function ProductPageProps(props: ProductPageProps) {
         />
        </div>
        <div className="flex h-[100px] items-center">
-        <h4 className="text-white truncate">{product.title}</h4>
+        <h4 className="text-white truncate">{product.name}</h4>
        </div>
        <div className="flex justify-between items-center w-full">
         <p className="text-white">{product.price}</p>
